@@ -42,8 +42,7 @@ RUN chown ${NB_UID} /home/$NB_USER/environment.yml && \
     chown ${NB_UID} /home/$NB_USER/Dockerfile
 USER $NB_USER
 WORKDIR /home/$NB_USER
-RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
-    conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
+RUN conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
     conda activate notebook-env && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
