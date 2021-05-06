@@ -11,3 +11,4 @@ dependencies:
    - spython==0.1.13
    - ipywidgets==7.6.3
    - jupyterlab==3.0.14
+   - elyra>=2.0.1
