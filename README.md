@@ -1,2 +1,2 @@
-# nextflow_tutorial_notebooks
+# Nextflow tutorial notebooks
 Jupyter notebook based tutorial for Nextflow
