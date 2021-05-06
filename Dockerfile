@@ -44,6 +44,8 @@ USER $NB_USER
 WORKDIR /home/$NB_USER
 RUN conda update -n base -c defaults conda && \
     conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+    jupyter nbextension enable --py widgetsnbextension && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
