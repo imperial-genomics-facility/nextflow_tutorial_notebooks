@@ -45,8 +45,6 @@ WORKDIR /home/$NB_USER
 RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
     conda update -n base -c defaults conda && \
     conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
-    /home/vmuser/miniconda3/envs/notebook-env/bin/jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
-    /home/vmuser/miniconda3/envs/notebook-env/bin/jupyter nbextension enable --py widgetsnbextension && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
