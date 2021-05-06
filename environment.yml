@@ -1,0 +1,5 @@
+channels:
+ - bioconda
+dependencies:
+ - bioconda::nextflow=21.04.0
+ - bioconda::nf-core=1.13.3
