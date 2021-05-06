@@ -8,3 +8,4 @@ dependencies:
  - pip:
    - nf-core==1.13.3
    - spython==0.1.13
+   - ipywidgets==7.6.3
