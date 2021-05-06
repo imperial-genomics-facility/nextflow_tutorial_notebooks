@@ -43,7 +43,6 @@ RUN chown ${NB_UID} /home/$NB_USER/environment.yml && \
 USER $NB_USER
 WORKDIR /home/$NB_USER
 RUN conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
-    conda activate notebook-env && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
