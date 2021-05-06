@@ -4,11 +4,7 @@ channels:
 dependencies:
  - bioconda::nextflow=21.04.0
  - conda-forge::singularity=3.7.1
- - conda-forge::jupyterlab_widgets
  - pip
  - pip:
    - nf-core==1.13.3
    - spython==0.1.13
-   - ipywidgets==7.6.3
-   - jupyterlab==3.0.14
-   - elyra>=2.0.1
