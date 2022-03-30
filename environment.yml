@@ -2,9 +2,9 @@ channels:
  - conda-forge
  - bioconda
 dependencies:
- - bioconda::nextflow=21.04.0
- - conda-forge::singularity=3.7.1
+ - bioconda::java-jdk
+ - bioconda::snakemake
  - pip
  - pip:
-   - nf-core==1.13.3
-   - spython==0.1.13
+   - apache-airflow
+   - spython
