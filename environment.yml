@@ -2,8 +2,7 @@ channels:
  - conda-forge
  - bioconda
 dependencies:
- - bioconda::java-jdk
- - bioconda::snakemake
+ - bioconda::snakemake-minimal
  - pip
  - pip:
    - apache-airflow
