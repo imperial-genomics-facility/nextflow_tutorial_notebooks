@@ -31,6 +31,7 @@ RUN apt-get -y update &&   \
       gfortran \
       default-jre \
       default-jdk-headless \
+      squashfs-tools \
       git  && \
     apt-get purge -y --auto-remove && \
     apt-get clean && \
