@@ -31,7 +31,9 @@ RUN apt-get -y update &&   \
       gfortran \
       default-jre \
       default-jdk-headless \
-      squashfs-tools \
+      libssl-dev \
+      uuid-dev \
+      libgpgme11-dev \
       git  && \
     apt-get purge -y --auto-remove && \
     apt-get clean && \
@@ -42,20 +44,41 @@ RUN curl -s https://get.nextflow.io | bash \
     && chmod +x /usr/local/bin/nextflow \
     && chmod +r /usr/local/bin/nextflow \
     && rm -rf /tmp/nextflow*
-RUN wget https://go.dev/dl/go1.18.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz && \
-    rm -rf go1.18.linux-amd64.tar.gz
-ENV PATH="/usr/local/go/bin:${PATH}"
-ENV SINGULARITY_VERSION=3.9.5
-RUN wget https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
-    tar -xzf singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
-    cd singularity-ce-${SINGULARITY_VERSION} && \
-    ./mconfig && \
-    make -C builddir && \
-    make -C builddir install && \
-    cd .. && \
-    rm -rf singularity-ce-${SINGULARITY_VERSION} singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
-    rm -rf /tmp/*
+#RUN wget https://go.dev/dl/go1.18.linux-amd64.tar.gz && \
+#    tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz && \
+#    rm -rf go1.18.linux-amd64.tar.gz
+#ENV GOPATH="/home/vmuser/go"
+#ENV PATH="/usr/local/go/bin:${PATH}:${GOPATH}/bin"
+#RUN go get -u github.com/golang/dep/cmd/dep
+#ENV SINGULARITY_VERSION=3.9.5
+#RUN wget https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
+#    tar -xzf singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
+#    cd singularity-ce-${SINGULARITY_VERSION} && \
+#    ./mconfig && \
+#    make -C builddir && \
+#    make -C builddir install && \
+#    cd .. && \
+#    rm -rf singularity-ce-${SINGULARITY_VERSION} singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
+#    rm -rf /tmp/*
+#RUN cd /home/vmuser/go && \
+#    mkdir -p src/github.com/sylabs && \
+#    cd src/github.com/sylabs && \
+#    wget https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-${SINGULARITY_VERSION}.tar.gz && \
+#    tar -xzf singularity-${SINGULARITY_VERSION}.tar.gz && \
+#    cd ./singularity && \
+#    ./mconfig && \
+#    make -C builddir && \
+#    make -C builddir install && \
+#    cd .. && \
+#    rm -rf singularity-${SINGULARITY_VERSION} singularity-${SINGULARITY_VERSION}.tar.gz && \
+#    rm -rf /tmp/*
+RUN wget -O- http://neuro.debian.net/lists/xenial.us-ca.full | tee /etc/apt/sources.list.d/neurodebian.sources.list && \
+    apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9 && \
+    apt-get update && \
+    apt-get install -y singularity-container && \
+    apt-get purge -y --auto-remove && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 USER $NB_USER
 WORKDIR /home/$NB_USER
 ENV TMPDIR=/tmp
