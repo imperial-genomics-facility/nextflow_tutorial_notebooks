@@ -43,7 +43,8 @@ RUN curl -s https://get.nextflow.io | bash \
     && mv nextflow /usr/local/bin/ \
     && chmod +x /usr/local/bin/nextflow \
     && chmod +r /usr/local/bin/nextflow \
-    && rm -rf /tmp/nextflow*
+    && rm -rf /tmp/nextflow* \
+    && rm -rf /tmp/*
 USER $NB_USER
 WORKDIR /home/$NB_USER
 ENV TMPDIR=/tmp
