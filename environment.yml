@@ -1,0 +1,17 @@
+name: pipeline_tutorial
+dependencies:
+ - conda-forge::python=3.7.10
+ - conda-forge::r-base
+ - conda-forge::rpy2
+ - conda-forge::pandas
+ - conda-forge::scikit-learn
+ - conda-forge::altair
+ - conda-forge::vega_datasets
+ - conda-forge::jupyter-server-proxy
+ - bioconda::snakemake-minimal
+ - bioconda::nextflow
+ - pip
+ - pip:
+   - apache-airflow
+   - matplotlib
+   - seaborn
