@@ -51,14 +51,14 @@ ENV TMPDIR=/tmp
 ENV PATH=$PATH:/home/$NB_USER/miniconda3/bin/
 RUN rm -f /home/$NB_USER/environment.yml && \
     rm -f /home/$NB_USER/Dockerfile
-COPY environment.yml /home/$NB_USER/environment.yml
+COPY environment.yaml /home/$NB_USER/environment.yaml
 COPY Dockerfile /home/$NB_USER/Dockerfile
 USER root
-RUN chown ${NB_UID} /home/$NB_USER/environment.yml && \
+RUN chown ${NB_UID} /home/$NB_USER/environment.yaml && \
     chown ${NB_UID} /home/$NB_USER/Dockerfile
 USER $NB_USER
 WORKDIR /home/$NB_USER
-RUN conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
+RUN conda env update -q -n notebook-env --file /home/$NB_USER/environment.yaml && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
