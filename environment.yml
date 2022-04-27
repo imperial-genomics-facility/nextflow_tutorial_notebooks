@@ -8,6 +8,7 @@ dependencies:
  - conda-forge::altair
  - conda-forge::vega_datasets
  - conda-forge::jupyter-server-proxy
+ - conda-forge::python-graphviz
  - bioconda::snakemake-minimal
  - bioconda::nextflow
  - pip
